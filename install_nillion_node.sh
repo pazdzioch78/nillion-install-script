@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # Sprawdzenie, czy skrypt jest uruchamiany jako root
@@ -50,11 +51,8 @@ nilup init
 echo "Pobieranie obrazu weryfikatora z Docker Hub..."
 docker pull nillion/verifier:v1.0.1
 
-# Krok 5: Inicjalizacja weryfikatora
-echo "Tworzenie katalogu na dane weryfikatora..."
-mkdir -p nillion/verifier
+# Krok 5: Uruchomienie węzła Nillion
+echo "Uruchamianie węzła Nillion..."
+docker run -d --name nillion-verifier -v /path/to/your/data:/var/tmp nillion/verifier:v1.0.1
 
-echo "Inicjalizacja weryfikatora..."
-docker run -v ./nillion/verifier:/var/tmp nillion/verifier:v1.0.1 initialise
-
-echo "Instalacja zakończona pomyślnie!"
+echo "Węzeł Nillion został uruchomiony pomyślnie!"
